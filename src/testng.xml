@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="classes" thread-count="1">
+  <test name="Test" verbose="5">
+    <classes>
+      <!--<class name="com.selenium.test.TestSeleniumTest"/>-->
+      <!--<class name="com.selenium.test.TestSeleniumTestdd"/>-->
+      <class name="com.selenium.test.SeleniumTestNG"/>
+      <!--<class name="com.tng.test.DdataProviderTest"/>-->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

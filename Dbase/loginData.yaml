@@ -1,0 +1,10 @@
+LoginData:
+  login_case1:
+    name: benben
+    pwd: 139432
+    expect: benben@163.com
+
+SearchData:
+  search_case1:
+    case1: aa
+    case2: bb

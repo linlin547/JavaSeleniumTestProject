@@ -1,0 +1,7 @@
+URL:
+  confirm: http://mail.163.com
+login:
+  name: input#idInput
+  pwd: input#pwdInput
+  button: button#loginBtn
+  expect: span#spnUid
