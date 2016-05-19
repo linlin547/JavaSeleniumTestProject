@@ -38,4 +38,5 @@ public class SeleniumTestNG {
         Assert.assertEquals(expectData, String.valueOf(map.get("expect")));
 
     }
+
 }

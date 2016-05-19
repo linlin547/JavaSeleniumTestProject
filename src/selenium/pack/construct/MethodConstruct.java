@@ -1,55 +1,34 @@
 package selenium.pack.construct;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by mac-li on 16/5/16.
  */
 public class MethodConstruct {
-    protected WebDriver webDriver;
-
-    static {
-        //chrome浏览器--可以设置多个浏览器
-        System.setProperty("webdriver.chrome.driver",
-                "/Users/mac-li/Documents/Java_Lib/Selenium_lib/chromedriver");
-    }
+    private WebDriver webDriver;
 
     public MethodConstruct(String name) {
-        this.webDriver = switchDriver(name);
+        //获取driver对象
+        MethodDriver methodDriver = new MethodDriver();
+        methodDriver.setWebDriver(name);
+        this.webDriver = MethodDriver.getWebDriver();
+
         //设置10秒 ,全局所有元素都会在未找到元素前等待默认超时时间
         try {
             webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    private WebDriver switchDriver(String drivername) {
-        //driver 初始化
-        switch (drivername.toLowerCase()) {
-            case "chrome":
-                webDriver = new ChromeDriver();
-                break;
-            case "firefox":
-                webDriver = new FirefoxDriver();
-                break;
-            case "ie":
-                webDriver = new InternetExplorerDriver();
-                break;
-            default:
-                break;
-        }
-        //返回webdriver对象
-        return webDriver;
     }
 
     public void getUrl(String url) {
@@ -102,6 +81,24 @@ public class MethodConstruct {
         (new Actions(webDriver)).dragAndDrop(element, target).perform();
     }
 
+    public void snapshot(String filename){
+        String currentPath = System.getProperty("user.dir"); //get current work folder
+        System.out.println(currentPath);
+        File scrFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
+        try {
+            System.out.println("save snapshot path is:"+currentPath+"/"+filename);
+            FileUtils.copyFile(scrFile, new File(currentPath + File.separator + filename));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Can't save screenshot");
+            e.printStackTrace();
+        }
+        finally
+        {
+
+            System.out.println("screen shot finished");
+        }
+    }
     public WebElement css(String cssvalue) {
         //css 定位
         return webDriver.findElement(By.cssSelector(cssvalue));
@@ -115,4 +112,8 @@ public class MethodConstruct {
         webDriver.quit();
     }
 
+    public static void main(String[] args) {
+        String currentPath = System.getProperty("user.dir"); //get current work folder
+        System.out.println(currentPath);
+    }
 }

@@ -2,6 +2,7 @@ package com.analysis.data;
 
 import org.testng.annotations.DataProvider;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,15 @@ import java.util.Map;
  * ——————————————
  */
 public class DataProviderCon {
-    private static String dataFilePath = "/Users/mac-li/Documents/Java_project/JavaSeleniumTestProject/Dbase/loginData.yaml";
+
+    private static String dataFilePath = "Dbase/loginData.yaml";
     private static Map<String, Object> mapHistory;
 
     public static void DataPro() throws IOException {
-        ReturnDatabase returnDatabase = new ReturnDatabase(dataFilePath);
+        //拼接数据文件路径
+        String courseFile = new File("").getCanonicalPath();
+        String DataYamlPath = courseFile + File.separator + dataFilePath;
+        ReturnDatabase returnDatabase = new ReturnDatabase(DataYamlPath);
         mapHistory = returnDatabase.getYaml();
         /*
         * 原始返回数据

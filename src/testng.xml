@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="classes" thread-count="1">
-  <test name="Test" verbose="5">
+  <listeners>
+    <!--执行重试 -->
+    <listener class-name="com.extend.testng.RetryListener"/>
+    <!--结果去除重试次数 && 失败自动截图 -->
+    <listener class-name="com.extend.testng.TestListener"/>
+  </listeners>
+  <test name="Test" verbose="2">
     <classes>
-      <!--<class name="com.selenium.test.TestSeleniumTest"/>-->
-      <!--<class name="com.selenium.test.TestSeleniumTestdd"/>-->
       <class name="com.selenium.test.SeleniumTestNG"/>
-      <!--<class name="com.tng.test.DdataProviderTest"/>-->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

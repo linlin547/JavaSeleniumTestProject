@@ -1,8 +1,8 @@
 LoginData:
   login_case1:
     name: benben
-    pwd: 139432
-    expect: benben@163.com
+    pwd: 13943
+    expect: benbenx
 
 SearchData:
   search_case1:
