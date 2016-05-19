@@ -15,7 +15,8 @@
     10.TestNG失败自动截图类 com.extend.testng.TestListener</br>
     11.testng配置文件 testng.xml</br>
     12.ScreenImage－－截图保存目录</br>
-ps:</br>
+
+TestNG扩展方法使用:</br>
   1.TestNG失败重试,结果去重，截图类需要在testng.xml文件中用listeners声明</br>
 
 唠叨:</br>
