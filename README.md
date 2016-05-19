@@ -2,7 +2,7 @@
 项目描述：</br>
   登陆163邮箱登陆为例，断言登陆成功展示用户名与预期用户名一致，完成一次小的测试流程</br>
   TestNG已添加失败重试方法，测试结果去除(重试)方法，失败自动截图方法；</br>
-  文件描述：
+  文件描述：</br>
     1.页面控件数据源 Dbase/login.yaml</br>
     2.测试数据源 Dbase/loginData.yaml</br>
     3.Selenium方法二次封装类 selenium.pack.construct.MethodDriver && selenium.pack.construct.MethodConstruct</br>
